@@ -6,6 +6,7 @@
 */
 
 #include "proto.h"
+#include <stdio.h>
 
 int main(){
     const int DIMENSIONE_INPUT        = 11; // mm + gg + aaaa + 2*/ basato sul tipo di input + /0
@@ -14,10 +15,12 @@ int main(){
     
     char dataInput[DIMENSIONE_INPUT]; 
     int data1 [DIMENSIONE_ELABORAZIONE], data2[DIMENSIONE_ELABORAZIONE];
-    int mesi [DIMENSIONE_MESI] = {361, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int mesi [] = {361, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     char formato; //formato data 1-3
     char scelta;  //ripeti programma
+
+    printf(" la scelta è %d", dateFormat());
 
     do{
         //menu
@@ -32,7 +35,7 @@ int main(){
             //chiedo la seconda data
 
             //converto la seconda data da char a int
-            
+
             //elaboro i dati e do il risultato
         }
 
