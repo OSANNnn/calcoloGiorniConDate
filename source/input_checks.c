@@ -46,11 +46,11 @@ void dateGetValidate(char input[], int output[], int dimensione, int formato){
                     appoggio[i + 6] = input[i];
                     contaChar++;
                 }        
-                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 2 && contaChar <= 3) && i >= 2){
+                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 2 && contaChar < 4) && i > 2){
                     appoggio[i + 1] = input[i];
                     contaChar++;
                 }               
-                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 3 && contaChar <=7)  && i >= 5){
+                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 4 && contaChar < 8)  && i > 5){
                     appoggio[i - 6] = input[i];
                     contaChar++;
                 }
@@ -67,11 +67,11 @@ void dateGetValidate(char input[], int output[], int dimensione, int formato){
                     appoggio[i + 4] = input[i];
                     contaChar++;
                 }        
-                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 2 && contaChar <= 3) && i >= 2){
+                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 2 && contaChar < 4) && i > 2){
                     appoggio[i + 3] = input[i];
                     contaChar++;
                 }               
-                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 3 && contaChar <=7)  && i >= 5){
+                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 4 && contaChar <=7)  && i > 5){
                     appoggio[i - 6] = input[i];
                     contaChar++;
                 }
@@ -88,7 +88,7 @@ void dateGetValidate(char input[], int output[], int dimensione, int formato){
                     appoggio[i] = input[i];
                     contaChar++;
                 }        
-                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 3 && contaChar <= 5) && i > 4){
+                else if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && (contaChar >= 4 && contaChar < 6) && i > 4){
                     appoggio[i - 1] = input[i];
                     contaChar++;
                 }               
