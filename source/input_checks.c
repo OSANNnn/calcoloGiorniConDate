@@ -132,6 +132,5 @@ void dateConversion(char dataIn[], int dataOut[]){
             dataOut[2] += (dataIn[j] - '0') * pow(10, esponente);
         }
         printf("%d %d %d\n ",dataOut[0], dataOut[1], dataOut[2]); //debug
-    }
-    
+    }   
 }
