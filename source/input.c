@@ -34,6 +34,7 @@ void dateGetValidate(char input[], int dimensione, int formato){
     do{
         printf("Inserisci la data %s: ", stringaFormato[formato]);
         scanf("%s", input);
+        scanf("%s", input);
         while(getchar() != '\n');
         valida    = 1;
         contaChar = 0; //conta i caratteri diversi da '/'           |a|b|/|c|d|/|e|f|g|h|
@@ -75,6 +76,7 @@ void dateGetValidate(char input[], int dimensione, int formato){
                     contaChar++;
                 }
                 else if (input[i] != '/') {
+                else if (input[i] != '/') {
                     printf("Formato non valido.\n");
                     valida = 0;
                 }
@@ -97,10 +99,14 @@ void dateGetValidate(char input[], int dimensione, int formato){
                     contaChar++;
                 }
                 else if (input[i] != '/') {
+                else if (input[i] != '/') {
                     printf("Formato non valido.\n");
                     valida = 0;
                 }
             }
+            appoggio[8] = '\0';
+            printf("%s \n", appoggio); //debug
+        }
             appoggio[8] = '\0';
             printf("%s \n", appoggio); //debug
         }
