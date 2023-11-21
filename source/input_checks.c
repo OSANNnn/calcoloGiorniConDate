@@ -24,7 +24,7 @@ int dateFormat(){
 }
 
 void dateGetValidate(char input[], int output[], int dimensione, int formato){
-    char appoggio[dimensione];
+    char appoggio[dimensione]; //array di appoggio per la standardizzazione della data (lo standard per l'utilizzo nelle altre funzioni) aaaammgg
     char stringaFormato[4][11];
     int  contaChar;
     int  valida;
@@ -38,10 +38,11 @@ void dateGetValidate(char input[], int output[], int dimensione, int formato){
         scanf("%s", input);
         while(getchar() != '\n');
         valida    = 1;
-        contaChar = 0; //conta i caratteri diversi da '/'           |a|b|/|c|d|/|e|f|g|h|
-     //                                                             |0|1|2|3|4|5|6|7|8|9|
-        if (formato == 1){ //gg/mm/aaaa                             |e|f|g|h|c|d|a|b|-|-| schema di come devono arrivare i valori sull'array di appoggio
-            for (int i = 0; i < dimensione-1 && valida; i++){
+        contaChar = 0; //conta i caratteri diversi da '/'              
+        
+        //Standardizzo la data in un formato specifico aaaammgg           |a|b|/|c|d|/|e|f|g|h|
+        if (formato == 1){ //gg/mm/aaaa                                   |0|1|2|3|4|5|6|7|8|9|        
+            for (int i = 0; i < dimensione-1 && valida; i++){//           |e|f|g|h|c|d|a|b|-|-| schema di come devono arrivare i valori sull'array di appoggio
                 if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && contaChar < 2 && i < 2){
                     appoggio[i + 6] = input[i];
                     contaChar++;
