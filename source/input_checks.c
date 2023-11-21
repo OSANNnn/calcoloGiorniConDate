@@ -60,7 +60,6 @@ void dateGetValidate(char input[], int output[], int dimensione, int formato){
                 }
             }
             appoggio[8] = '\0';
-            printf("%s \n", appoggio); //debug
         }
         else if (formato == 2){ //mm/gg/aaaa
             for (int i = 0; i < dimensione-1 && valida; i++){
@@ -82,8 +81,6 @@ void dateGetValidate(char input[], int output[], int dimensione, int formato){
                 }
             }
             appoggio[8] = '\0';
-            printf("%s \n", input); //debug
-            printf("%s \n", appoggio); //debug
         }
         else if (formato == 3){ //aaaa/mm/gg
             for (int i = 0; i < dimensione-1 && valida; i++){
@@ -105,10 +102,10 @@ void dateGetValidate(char input[], int output[], int dimensione, int formato){
                 }
             }
             appoggio[8] = '\0';
-            printf("%s \n", appoggio); //debug
         }
     }while (!valida);
-
+    printf("%s \n", input); //debug
+    printf("%s \n", appoggio); //debug
     dateConversion(appoggio, output);
 }
 
