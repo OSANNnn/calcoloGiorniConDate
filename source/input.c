@@ -76,7 +76,6 @@ void dateGetValidate(char input[], int dimensione, int formato){
                     contaChar++;
                 }
                 else if (input[i] != '/') {
-                else if (input[i] != '/') {
                     printf("Formato non valido.\n");
                     valida = 0;
                 }
@@ -99,14 +98,10 @@ void dateGetValidate(char input[], int dimensione, int formato){
                     contaChar++;
                 }
                 else if (input[i] != '/') {
-                else if (input[i] != '/') {
                     printf("Formato non valido.\n");
                     valida = 0;
                 }
             }
-            appoggio[8] = '\0';
-            printf("%s \n", appoggio); //debug
-        }
             appoggio[8] = '\0';
             printf("%s \n", appoggio); //debug
         }
