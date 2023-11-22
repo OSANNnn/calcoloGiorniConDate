@@ -135,6 +135,7 @@ void dateConversion(char dataIn[], int dataOut[]){
 }
 
 int dateValidation(int input[], int arrayMesi[]){
+    //controllo il valore dell'anno/mese e giorno (controllo febbraio se è bisestile)
     if (input[0] < 0){
         printf ("Anno non valido\n\n");
         return 0;
@@ -143,10 +144,25 @@ int dateValidation(int input[], int arrayMesi[]){
         printf("Mese non valido.\n\n");
         return 0;
     }
-    else if (input[1] == 2 && (input[0] % 400 == 0) || (input[0] % 100 != 0 && input[0] % 4 == 0){
-        if (input[2])
-        
+    else if (input[2]){
+        if ((input[0] % 400 == 0) || (input[0] % 100 != 0 && input[0] % 4 == 0)){
+            if (input[2] < 1 || input[2] > 29){
+                printf("Giorno non valido. \n\n");
+                return 0;
+            }
+            else if (input[2] < 1 || input[2] > 28){
+                printf("Giorno non valido.\n\n");
+                return 0;
+            }
+            else if (input[2] == 29){
+                printf("Anno non valido, l'anno indicato non è bisestile.\n\n");
+                return 0;
+            }
+        }
     }
-
-    return 0;
+    else if (input[2] < 0 || input[2] > arrayMesi[input[1]]){
+        printf("Giorno non valido.\n\n");
+        return 0;
+    }
+    return 1;
 }
