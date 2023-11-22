@@ -127,9 +127,26 @@ void dateConversion(char dataIn[], int dataOut[]){
             dataOut[1] += (dataIn[j] - '0') * pow(10, esponente);
         }
         else if (j > 5 && j < 8){
-            esponente = abs(j -7);
+            esponente = abs(j - 7);
             dataOut[2] += (dataIn[j] - '0') * pow(10, esponente);
         }
         printf("%d %d %d\n",dataOut[0], dataOut[1], dataOut[2]); //debug
     }   
+}
+
+int dateValidation(int input[], int arrayMesi[]){
+    if (input[0] < 0){
+        printf ("Anno non valido\n\n");
+        return 0;
+    }
+    else if (input[1] < 1 || input[1] > 12){
+        printf("Mese non valido.\n\n");
+        return 0;
+    }
+    else if (input[1] == 2 && (input[0] % 400 == 0) || (input[0] % 100 != 0 && input[0] % 4 == 0){
+        if (input[2])
+        
+    }
+
+    return 0;
 }
