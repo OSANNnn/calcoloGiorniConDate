@@ -23,7 +23,7 @@ int dateFormat(){
     }while (scelta > '3' || scelta < '1');
 }
 
-void dateGetValidate(char input[], int output[], int dimensione, int formato){
+void dateGetValidateFormat1(char input[], int output[], int dimensione, int formato){
     char appoggio[dimensione]; //array di appoggio per la standardizzazione della data (lo standard per l'utilizzo nelle altre funzioni) aaaammgg
     char stringaFormato[4][11];
     int  contaChar;
