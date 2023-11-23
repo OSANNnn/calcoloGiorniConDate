@@ -11,7 +11,7 @@ void dateConversion(char dataIn[], int dataOut[]);
 //validazione della data
 int dateValidation(int input[], const int arrayMesi[]);
 //scambio le date nei vettori nel caso venga inserita per prima la data più lontana
-void dateInversion(char dataChar1[], char dataChar2, int dimensione, int dataInt1, int dataInt2);
+void dateInversion(char dataChar1[], char dataChar2[], int dimensione, int dataInt1[], int dataInt2[]);
 //elaborazione dei dati e output dei risultati
 void dateElaboration(int data1[], int data2[], const int arrayMesi);
 //menù (bool)

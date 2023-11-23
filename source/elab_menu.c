@@ -21,7 +21,22 @@ int menu(){
 }
 
 
-void dateInversion(char dataChar1[], char dataChar2, int dimensione, int dataInt1, int dataInt2){
+void dateInversion(char dataChar1[], char dataChar2[], int dimensione, int dataInt1[], int dataInt2[]){
+    char appoggioChar[dimensione];
+    int  appoggioInt[3];
+    
+    for (int i = 0; i < dimensione; i++){
+
+        appoggioChar[i] = dataChar1[i];
+        dataChar1[i]    = dataChar2[i];
+        dataChar2[i]    = appoggioChar[i];
+
+        if (i < 3){
+            appoggioInt[i] = dataInt1[i];
+            dataInt1[i]    = dataInt2[i];
+            dataInt2[i]    = appoggioInt[i]; 
+        }
+    }
 }
 
 
