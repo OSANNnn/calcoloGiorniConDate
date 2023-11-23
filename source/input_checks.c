@@ -4,6 +4,7 @@
 #include <stdlib.h> //funzione abs
 #include <math.h>   //funzione pow
 
+
 int dateFormat(){
     char scelta;
 
@@ -23,7 +24,8 @@ int dateFormat(){
     }while (scelta > '3' || scelta < '1');
 }
 
-void dateGetValidateFormat1(char input[], int output[], int dimensione, int formato){
+
+void dateGetValidateFormat(char input[], int output[], int dimensione, int formato){
     char appoggio[dimensione]; //array di appoggio per la standardizzazione della data (lo standard per l'utilizzo nelle altre funzioni) aaaammgg
     char stringaFormato[4][11];
     int  contaChar;
@@ -37,6 +39,7 @@ void dateGetValidateFormat1(char input[], int output[], int dimensione, int form
         printf("Inserisci la data %s: ", stringaFormato[formato]);
         scanf("%s", input);
         while(getchar() != '\n');
+        input[dimensione - 1] = '\0';
         valida    = 1;
         contaChar = 0; //conta i caratteri diversi da '/'              
         
@@ -105,10 +108,11 @@ void dateGetValidateFormat1(char input[], int output[], int dimensione, int form
             appoggio[8] = '\0';
         }
     }while (!valida);
-    printf("%s \n", input); //debug
-    printf("%s \n", appoggio); //debug
+    //printf("%s \n", input); //debug
+    //printf("%s \n", appoggio); //debug
     dateConversion(appoggio, output);
 }
+
 
 void dateConversion(char dataIn[], int dataOut[]){
     int esponente; //variabile contentente l'esponente da applicare a 10
@@ -130,39 +134,36 @@ void dateConversion(char dataIn[], int dataOut[]){
             esponente = abs(j - 7);
             dataOut[2] += (dataIn[j] - '0') * pow(10, esponente);
         }
-        printf("%d %d %d\n",dataOut[0], dataOut[1], dataOut[2]); //debug
-    }   
+    }
+    printf("%d %d %d\n",dataOut[0], dataOut[1], dataOut[2]); //debug   
 }
 
-int dateValidation(int input[], int arrayMesi[]){
-    //controllo il valore dell'anno/mese e giorno (controllo febbraio se è bisestile)
-    if (input[0] < 0){
+
+int dateValidation(int input[], const int arrayMesi[]){
+    //controllo il valore dell'anno/mese/giorno (controllo febbraio se è bisestile)
+    printf("mese? %d\n", arrayMesi[input[1]]);
+    printf("giorno? %d\n", input[2]);
+    if (input[0] < 1){
         printf ("Anno non valido\n\n");
-        return 0;
+        return -1;
     }
     else if (input[1] < 1 || input[1] > 12){
         printf("Mese non valido.\n\n");
-        return 0;
-    }
-    else if (input[2]){
-        if ((input[0] % 400 == 0) || (input[0] % 100 != 0 && input[0] % 4 == 0)){
-            if (input[2] < 1 || input[2] > 29){
-                printf("Giorno non valido. \n\n");
-                return 0;
-            }
-            else if (input[2] < 1 || input[2] > 28){
-                printf("Giorno non valido.\n\n");
-                return 0;
-            }
-            else if (input[2] == 29){
-                printf("Anno non valido, l'anno indicato non è bisestile.\n\n");
-                return 0;
-            }
+        return -1;
+    } //se è bisestile
+    else if (input[1] == 2 && (input[0] % 400 == 0) || (input[0] % 100 != 0 && input[0] % 4 == 0)){
+        if (input[2] < 1 || input[2] > 29){
+            printf("Giorno non valido. feb \n\n");
+            return -1;
         }
     }
-    else if (input[2] < 0 || input[2] > arrayMesi[input[1]]){
-        printf("Giorno non valido.\n\n");
-        return 0;
+    else if (input[1] == 2 && input[2] == 29){
+        printf("Giorno non valido, l'anno indicato non è bisestile.\n\n");
+        return -1;
     }
-    return 1;
+    else if (input[2] < 1 || input[2] > arrayMesi[input[1]]){
+        printf("Giorno non valido.\n\n");
+        return -1;
+    }
+    return 0;
 }

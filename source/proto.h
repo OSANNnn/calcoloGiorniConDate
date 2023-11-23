@@ -9,7 +9,7 @@ void dateGetValidateFormat(char input[], int output[], int dimensione, int forma
 //conversione da char a int
 void dateConversion(char dataIn[], int dataOut[]);
 //validazione della data
-int dateValidation(int input[], int arrayMesi[]);
+int dateValidation(int input[], const int arrayMesi[]);
 //elaborazione dei dati e output dei risultati
 void dateElaboration(int data1[], int data2[], const int giorni);
 //menù (bool)

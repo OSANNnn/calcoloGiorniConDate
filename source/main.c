@@ -21,12 +21,12 @@ int main(){
     char ripeti;  //ripeti programma (bool)
 
 
-    while(menu()) {
+    while(/*menu()*/1) {
         //chiedo il formato della data
         formato = dateFormat();
         //chiedo l'input della prima data e eseguo il ciclo finchè la data è valida
         do{
-            dateGetValidate(dataInput1, data1, DIMENSIONE_INPUT, formato);
+            dateGetValidateFormat(dataInput1, data1, DIMENSIONE_INPUT, formato);
         }while (dateValidation(data1, mesi));
     }
     return 0;
