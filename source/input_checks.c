@@ -26,7 +26,7 @@ int dateFormat(){
 
 
 void dateGetValidateFormat(char input[], int output[], int dimensione, int formato){
-    char appoggio[dimensione]; //array di appoggio per la standardizzazione della data (lo standard per l'utilizzo nelle altre funzioni) aaaammgg
+    char appoggio[9]; //array di appoggio per la standardizzazione della data (lo standard per l'utilizzo nelle altre funzioni) aaaammgg
     char stringaFormato[4][11];
     int  contaChar;
     int  valida;
@@ -175,6 +175,6 @@ int dateValidation(int input[], const int arrayMesi[]){
         printf("Giorno non valido.\n\n");
         return -1;
     }
-    
+
     return 0;
 }

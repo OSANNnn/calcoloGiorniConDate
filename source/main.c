@@ -40,15 +40,37 @@ int main(){
         }while (dateValidation(data1, mesi));
         //chiedo l'input della seconda data
         do{
-            dateGetValidateFormat(dataInput1, data1, DIMENSIONE_INPUT, formato);
+            dateGetValidateFormat(dataInput2, data2, DIMENSIONE_INPUT, formato);
         }while (dateValidation(data1, mesi));
+
+
+        //debug
+        printf("data_1: %s ", dataInput1);
+        for (int i = 0; i < DIMENSIONE_ELABORAZIONE; i++){
+            printf("%d ", data1[i]);
+        }
+        printf(" data_2: %s ", dataInput2);
+        for (int i = 0; i < DIMENSIONE_ELABORAZIONE; i++){
+            printf("%d ", data2[i]);
+        }
+        printf("\n");
+        //fine debug
         //controllo che la prima data sia antecedente alla sconda, in caso contrario scambio i valori nei vettori, in modo che siano coerenti
         //  (   anno1 > anno2    )XOR(     stesso anno     e     mese1 > mese2   )XOR(     stesso anno     e     stesso mese       e   giorno1 > giorno2 )
         if ((data1[0] > data2 [0]) ^ (data1[0] == data2[0] && data1[1] > data2[1]) ^ (data1[0] == data2[0] && data1[1] == data2[1] && data1[2] > data2[2])){
             dateInversion(dataInput1, dataInput2, DIMENSIONE_INPUT, data1, data2);
         }
-
-        printf("data_1: %s %d \ndata_2: %s %d", dataInput1, data1, dataInput2, data2);
+        //debug
+        printf("data_1: %s ", dataInput1);
+        for (int i = 0; i < DIMENSIONE_ELABORAZIONE; i++){
+            printf("%d ", data1[i]);
+        }
+        printf(" data_2: %s ", dataInput2);
+        for (int i = 0; i < DIMENSIONE_ELABORAZIONE; i++){
+            printf("%d ", data2[i]);
+        }
+        printf("\n");
+        //fine debug
 
     }
     return 0;
