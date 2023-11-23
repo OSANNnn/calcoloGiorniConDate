@@ -25,18 +25,20 @@ int dateFormat(){
 }
 
 
-void dateGetValidateFormat(char input[], int output[], int dimensione, int formato){
+void dateGetValidateFormat(char input[], int output[], int dimensione, int formato, int qualeData){
     char appoggio[9]; //array di appoggio per la standardizzazione della data (lo standard per l'utilizzo nelle altre funzioni) aaaammgg
-    char stringaFormato[4][11];
+    char stringaFormato[5][11];
     int  contaChar;
     int  valida;
 
-    strcpy(stringaFormato[1], "gg/mm/aaaa");
-    strcpy(stringaFormato[2], "mm/gg/aaaa");
+    strcpy(stringaFormato[0], "gg/mm/aaaa");
+    strcpy(stringaFormato[1], "mm/gg/aaaa");
     strcpy(stringaFormato[3], "aaaa/mm/gg");
+    strcpy(stringaFormato[4], "prima");
+    strcpy(stringaFormato[5], "seconda");
 
     do{
-        printf("Inserisci la data %s: ", stringaFormato[formato]);
+        printf("Inserisci la %s data %s: ",stringaFormato[qualeData + 4], stringaFormato[formato + 1]);
         scanf("%s", input);
         while(getchar() != '\n');
         input[dimensione - 1] = '\0';
