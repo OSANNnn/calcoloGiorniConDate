@@ -46,6 +46,7 @@ void dateGetValidateFormat(char input[], int output[], int dimensione, int forma
         //Standardizzo la data in un formato specifico aaaammgg           |a|b|/|c|d|/|e|f|g|h|
         if (formato == 1){ //gg/mm/aaaa                                   |0|1|2|3|4|5|6|7|8|9|        
             for (int i = 0; i < dimensione-1 && valida; i++){//           |e|f|g|h|c|d|a|b|-|-| schema di come devono arrivare i valori sull'array di appoggio
+                
                 if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && contaChar < 2 && i < 2){
                     appoggio[i + 6] = input[i];
                     contaChar++;
@@ -63,10 +64,13 @@ void dateGetValidateFormat(char input[], int output[], int dimensione, int forma
                     valida = 0;
                 }
             }
+
             appoggio[8] = '\0';
         }
         else if (formato == 2){ //mm/gg/aaaa
+
             for (int i = 0; i < dimensione-1 && valida; i++){
+
                 if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && contaChar < 2 && i < 2){
                     appoggio[i + 4] = input[i];
                     contaChar++;
@@ -84,10 +88,13 @@ void dateGetValidateFormat(char input[], int output[], int dimensione, int forma
                     valida = 0;
                 }
             }
+
             appoggio[8] = '\0';
         }
         else if (formato == 3){ //aaaa/mm/gg
+
             for (int i = 0; i < dimensione-1 && valida; i++){
+
                 if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && contaChar < 4 && i < 4){
                     appoggio[i] = input[i];
                     contaChar++;
@@ -105,8 +112,10 @@ void dateGetValidateFormat(char input[], int output[], int dimensione, int forma
                     valida = 0;
                 }
             }
+
             appoggio[8] = '\0';
         }
+
     }while (!valida);
     //printf("%s \n", input); //debug
     //printf("%s \n", appoggio); //debug
@@ -122,6 +131,7 @@ void dateConversion(char dataIn[], int dataOut[]){
     }
     //dataout[] 0 = anno, 1 = mese, 2 = giorno
     for (int j = 0; j < 8; j++){
+
         if (j < 4){
             esponente =  abs(j - 3);
             dataOut[0] += (dataIn[j] - '0') * pow(10, esponente); //es. 1234 = 1*10^3 + 2*10^2 + 3*10^1 4*10^0
@@ -135,14 +145,14 @@ void dateConversion(char dataIn[], int dataOut[]){
             dataOut[2] += (dataIn[j] - '0') * pow(10, esponente);
         }
     }
-    printf("%d %d %d\n",dataOut[0], dataOut[1], dataOut[2]); //debug   
+    //printf("%d %d %d\n",dataOut[0], dataOut[1], dataOut[2]); //debug   
 }
 
 
 int dateValidation(int input[], const int arrayMesi[]){
     //controllo il valore dell'anno/mese/giorno (controllo febbraio se è bisestile)
-    printf("mese? %d\n", arrayMesi[input[1]]);
-    printf("giorno? %d\n", input[2]);
+    //printf("mese? %d\n", arrayMesi[input[1]]); //debug
+    //printf("giorno? %d\n", input[2]); //debug
     if (input[0] < 1){
         printf ("Anno non valido\n\n");
         return -1;
@@ -165,5 +175,6 @@ int dateValidation(int input[], const int arrayMesi[]){
         printf("Giorno non valido.\n\n");
         return -1;
     }
+    
     return 0;
 }
