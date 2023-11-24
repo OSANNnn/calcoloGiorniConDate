@@ -30,7 +30,7 @@ int main(){
     //identifica se è la prima o la seconda data inserita
     int  identificaData;
 
-    printf("Il programma calcolerà quanti giorni sono presenti tra due date, \ncon la possibiltà di scelta del formato.\n\n");
+    printf("Il programma calcolerà quanti giorni sono presenti tra due date, \ncon la possibiltà di scelta del formato.\n");
     
     while (menu()){
         printf("\n");
@@ -51,6 +51,8 @@ int main(){
         if ((data1[0] > data2 [0]) ^ (data1[0] == data2[0] && data1[1] > data2[1]) ^ (data1[0] == data2[0] && data1[1] == data2[1] && data1[2] > data2[2])){
             dateInversion(dataInput1, dataInput2, DIMENSIONE_INPUT, data1, data2);
         }
+        //elaboro i dati e do il risultato dei giorni contenuti nelle date immesse
+        dateElaboration(data1, data2, mesi, dataInput1, dataInput2);
     }
 
     return 0;

@@ -19,9 +19,10 @@ int dateFormat(){
         }
         else {
             printf("Comando non valido.");
-            printf("\n\n");
+            printf("\n");
         }
     }while (scelta > '3' || scelta < '1');
+    printf("\n");
 }
 
 
@@ -30,15 +31,16 @@ void dateGetValidateFormat(char input[], int output[], int dimensione, int forma
     char stringaFormato[5][11];
     int  contaChar;
     int  valida;
-
+    //stringhe per pa printf della richiesta della data, ricordano il formato e quale data si sta inserendo
     strcpy(stringaFormato[0], "gg/mm/aaaa");
     strcpy(stringaFormato[1], "mm/gg/aaaa");
-    strcpy(stringaFormato[3], "aaaa/mm/gg");
-    strcpy(stringaFormato[4], "prima");
-    strcpy(stringaFormato[5], "seconda");
+    strcpy(stringaFormato[2], "aaaa/mm/gg");
+    strcpy(stringaFormato[3], "prima");
+    strcpy(stringaFormato[4], "seconda");
 
     do{
-        printf("Inserisci la %s data %s: ",stringaFormato[qualeData + 4], stringaFormato[formato + 1]);
+        printf("\n");
+        printf("Inserisci la %s data %s: ",stringaFormato[qualeData + 3], stringaFormato[formato - 1]);
         scanf("%s", input);
         while(getchar() != '\n');
         input[dimensione - 1] = '\0';
@@ -93,9 +95,9 @@ void dateGetValidateFormat(char input[], int output[], int dimensione, int forma
 
             appoggio[8] = '\0';
         }
-        else if (formato == 3){ //aaaa/mm/gg
-
-            for (int i = 0; i < dimensione-1 && valida; i++){
+        else if (formato == 3){ //aaaa/mm/gg                            |a|b|c|d|/|e|f|/|g|h|
+                                                        //              |0|1|2|3|4|5|6|7|8|9|
+            for (int i = 0; i < dimensione-1 && valida; i++){     //    |a|b|c|d|e|f|g|h|-|-|
 
                 if ((input[i] != '/' && (input[i] >= '0' && input[i] <= '9')) && contaChar < 4 && i < 4){
                     appoggio[i] = input[i];
@@ -151,6 +153,15 @@ void dateConversion(char dataIn[], int dataOut[]){
 }
 
 
+int bisestile(int anno){
+
+    if ((anno % 400 == 0) || (anno % 100 != 0 && anno % 4 == 0)){
+        return 1;
+    }
+
+    return 0;
+}
+
 int dateValidation(int input[], const int arrayMesi[]){
     //controllo il valore dell'anno/mese/giorno (controllo febbraio se è bisestile)
     //printf("mese? %d\n", arrayMesi[input[1]]); //debug
@@ -163,7 +174,8 @@ int dateValidation(int input[], const int arrayMesi[]){
         printf("Mese non valido.\n\n");
         return -1;
     } //se è bisestile
-    else if (input[1] == 2 && (input[0] % 400 == 0) || (input[0] % 100 != 0 && input[0] % 4 == 0)){
+    else if (input[1] == 2 && bisestile(input[0])){
+
         if (input[2] < 1 || input[2] > 29){
             printf("Giorno non valido. feb \n\n");
             return -1;
