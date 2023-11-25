@@ -73,7 +73,7 @@ void dateElaboration(int data1[], int data2[], const int arrayMesi[], char input
         for (int k = 12; k >= data2[1]; k--){
             contaGiorni -= arrayMesi[k];
             //escludo il bisestile se non compreso
-            if (k == 2 && bisestile(data2[0]) && (data2[1] == 2 && data2[2] < 29)){
+            if (k == 2 && bisestile(data2[0]) && (data2[1] <= 2 && data2[2] < 29)){
                 contaGiorni--;
             }
         }
